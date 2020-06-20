@@ -1,20 +1,20 @@
 // Modules
-const path = require('path');
-const bodyParser = require('koa-bodyparser');
-const koaStatic = require('koa-static');
+const path = require("path");
+const bodyParser = require("koa-bodyparser");
+const koaStatic = require("koa-static");
 
 // Router
-const router = require(path.join(__dirname, '..', 'routing', 'routing'));
+const router = require(path.join(__dirname, "..", "routing", "routing"));
 
 // Constants
-const STATIC_PATH = path.join(__dirname, '..', '..', 'public');
+const STATIC_PATH = path.join(__dirname, "..", "..", "public");
 
 // Middlewares init function
 async function init(app) {
-	// Middlewares
-	app.use(bodyParser()); // Body parser
-	app.use(koaStatic(STATIC_PATH));
-	/*app.use(async (ctx, next) => { // Redirect to Https from Http
+  // Middlewares
+  app.use(bodyParser()); // Body parser
+  app.use(koaStatic(STATIC_PATH));
+  /*app.use(async (ctx, next) => { // Redirect to Https from Http
 		if (ctx.secure) {
 			await next();
 		} else {
@@ -23,13 +23,13 @@ async function init(app) {
 		}
 	});*/
 
-	// Routes
-	app.use(router.routes());
+  // Routes
+  app.use(router.routes());
 
-	console.log('=> Middlewares were initialized!');
+  console.log("=> Middlewares were initialized!");
 }
 
 // Exports
 module.exports = {
-	init
+  init,
 };
